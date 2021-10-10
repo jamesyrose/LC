@@ -3,6 +3,14 @@ from utils import create_linked_list, linked_to_list, ListNode
 
 class Solution:
     def reverse(self, head: ListNode):
+        """
+        O(n) time
+        O(1) space
+        :param head:
+        :return:
+        """
+        if head is None:
+            return head
         prior = None
         while head.next is not None:
             next = head.next
