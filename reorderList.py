@@ -7,7 +7,7 @@ class Solution:
     def reorderList(self, head: ListNode) -> ListNode:
         """
         O(n) time
-        O(n) space
+        O(1) space
         :param head:
         :return:
         """
