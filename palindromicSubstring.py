@@ -1,5 +1,6 @@
 class Solution:
-    def longestPalindrome(self, s: str) -> str:
+    def countSubstrings(self, s: str) -> int:
+
         """
         O(n^2) time
         O(1)
@@ -7,26 +8,20 @@ class Solution:
         :param s:
         :return:
         """
-        longest = [-1, -1]
-        long_len = 0
+        count  = 0
 
         for i in range(len(s)): # O(n)
             l, r = i, i
             while l >= 0  and r < len(s) and s[l]  == s[r]: # O(n)
-                if (r - l + 1) >  long_len:
-                    longest = [l,r + 1]
-                    long_len = r - l  + 1
+                count += 1
                 l -=1
                 r += 1
             l, r =  i, i + 1
             while l >= 0  and r < len(s) and s[l]  == s[r]: # O(n)
-                if (r - l + 1) >  long_len:
-                    longest = [l,r + 1]
-                    long_len = r - l  + 1
+                count += 1
                 l -=1
                 r += 1
-        return s[longest[0]:longest[1]]
-
+        return count
 
     def bruteForce(self, s: str):
         """
@@ -45,9 +40,9 @@ class Solution:
         return longest
 
 if __name__ == "__main__":
-    s = "cbbd"
-    ans = "bab"
-    resp = Solution().longestPalindrome(s)
+    s = "abc"
+    ans =  3
+    resp = Solution().countSubstrings(s)
     if ans == resp:
         print("PASS", resp)
     else:
