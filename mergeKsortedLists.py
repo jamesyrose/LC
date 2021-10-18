@@ -4,7 +4,7 @@ from utils import create_linked_list, linked_to_list, ListNode
 class Solution:
     def mergeKLists(self, lists: list) -> ListNode:
         """
-        O(log k) time
+        O(n log k) time
 
         where n = sum(listNode)
         :param lists:
@@ -58,6 +58,8 @@ class Solution:
         newHead.next = lists[0]
 
         return head.next
+
+
     def mergeTwoLists(self, l1: ListNode, l2: ListNode) -> ListNode:
         """
         O(n + m)  time

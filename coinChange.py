@@ -7,7 +7,6 @@ class Solution:
         :param amount:
         :return:
         """
-
         arr = [amount + 1] * (amount + 1)
         arr[0] = 0
         for i in range(1, amount + 1):

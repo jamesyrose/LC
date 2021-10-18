@@ -60,6 +60,8 @@ def tree_to_list(seq):
             res.append(node.val)
             queue.append(node.left)
             queue.append(node.right)
+         else:
+            res.append(None)
    return res
 
 

@@ -1,21 +1,30 @@
 class Solution:
     def threeSum(self, nums: list) :
-        def twoSum(nums, target):
-            table = {}
-            for i in range(len(nums)):  # O(n)
-                remain = target - nums[i]
-                if remain in table.keys():  # O(1)
-                    return [table[remain], i]
-                table[nums[i]] = i
-            return - 1
-        ans = []
-        nums_sort = sorted(nums)
-        for i in range(len(nums_sort)):
-            target = nums_sort[i]
-            twos = twoSum(nums_sort, target)
-            if twos != -1:
-                ans.append([target, nums_sort[twos[0]], nums_sort[twos[1]]])
-        return ans
+        """
+        O(n log n) time
+        :param nums:
+        :return:
+        """
+        res = []
+        nums  = sorted(nums)
+
+        for i, a in enumerate(nums):
+            if i > 0 and a == nums[i - 1]:
+                continue
+
+            l, r = i + 1, len(nums) -1
+            while l < r:
+                three_sum = a + nums[l] + nums[r]
+                if three_sum > 0 :
+                    r -=1
+                elif three_sum < 0:
+                    l += 1
+                else:
+                    res.append([a, nums[l], nums[r]])
+                    l += 1
+                    while nums[l] == nums[l -1] and l < r:
+                        l += 1
+        return res
 
 
 

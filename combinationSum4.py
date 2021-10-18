@@ -1,19 +1,18 @@
 class Solution:
     def combinationSum4(self, nums: list, target: int) -> int:
         """
-        O(n^2)
+        O(n*m)
         :param nums:
         :param target:
         :return:
         """
-        dp = [0] * (target + 1)
+        dp = {0: 1}
 
-        for i in range(1, target):
+        for i in range(1, target + 1):
+            dp[i] = 0
             for num in nums:
-                if i - num >= 0:
-                    dp[i] += 1  + dp[i - num]
-        print(dp)
-        return dp[-2]
+                dp[i] += dp.get(i - num, 0)
+        return dp[target]
 
 
 
